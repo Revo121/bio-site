@@ -15,7 +15,7 @@
 
   <!-- Overlay -->
   <div id="overlay">
-    <div id="overlay-text">Click to Enter</div>
+    <div id="overlay-text" data-text="Click to Enter">Click to Enter</div>
   </div>
 
   <!-- Background video -->
@@ -55,9 +55,13 @@
     const audio = document.getElementById('bg-audio');
     const video = document.getElementById('bg-video');
 
-    // Wait for user click to start video/audio
     overlay.addEventListener('click', () => {
-      overlay.style.display = 'none'; // hide overlay
+      overlay.classList.add('fade-out');
+
+      // Wait for fade animation to finish before hiding overlay
+      overlay.addEventListener('transitionend', () => {
+        overlay.style.display = 'none';
+      });
 
       // Play video and audio
       video.play();
