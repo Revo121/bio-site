@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/* =====================
+   ROOT VARIABLES
+===================== */
 :root {
   --bg: #050505;
   --card: #0d0d0d;
@@ -10,6 +13,9 @@
   --glow: 0 0 25px rgba(255,0,60,.35);
 }
 
+/* =====================
+   RESET / BASE
+===================== */
 * {
   box-sizing: border-box;
 }
@@ -17,19 +23,24 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100vh;
   font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #0b0b0b, var(--bg));
+  background-color: #050505;
+  background-image: radial-gradient(circle at top, #0b0b0b, #050505);
   color: var(--text);
+  color-scheme: dark;
 }
 
 body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #050505 !important;
 }
 
-/* grain overlay */
+/* =====================
+   GRAIN OVERLAY
+===================== */
 .grain::before {
   content: "";
   position: fixed;
@@ -39,6 +50,9 @@ body {
   mix-blend-mode: overlay;
 }
 
+/* =====================
+   LAYOUT
+===================== */
 .container {
   width: 100%;
   max-width: 420px;
@@ -48,11 +62,14 @@ body {
 .card {
   background: linear-gradient(180deg, #0f0f0f, #090909);
   border: 1px solid #1a1a1a;
-  border-radius: 20px;
+  border-radius: 22px;
   padding: 28px 22px 30px;
-  box-shadow: 0 30px 80px rgba(0,0,0,.8);
+  box-shadow: 0 30px 80px rgba(0,0,0,.85);
 }
 
+/* =====================
+   PROFILE
+===================== */
 .profile {
   text-align: center;
   margin-bottom: 26px;
@@ -66,14 +83,24 @@ body {
   border: 2px solid var(--accent);
   background: linear-gradient(135deg, #111, #1b1b1b);
   box-shadow: var(--glow);
+  animation: pulse 3s infinite;
 }
 
+@keyframes pulse {
+  0%   { box-shadow: 0 0 12px rgba(255,0,60,.4); }
+  50%  { box-shadow: 0 0 28px rgba(255,0,60,.8); }
+  100% { box-shadow: 0 0 12px rgba(255,0,60,.4); }
+}
+
+/* =====================
+   GLITCH USERNAME
+===================== */
 .username {
   position: relative;
   font-size: 1.7rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  text-shadow: 0 0 15px rgba(255,0,60,.35);
+  color: var(--text);
 }
 
 .username::before,
@@ -84,36 +111,47 @@ body {
   top: 0;
   width: 100%;
   overflow: hidden;
+  pointer-events: none; /* FIXES BUTTON CLICKS */
 }
 
 .username::before {
   color: #ff003c;
-  animation: glitch1 2.5s infinite linear alternate-reverse;
+  transform: translateX(-1px);
+  animation: glitch1 2s infinite linear alternate-reverse;
 }
 
 .username::after {
   color: #00fff0;
-  animation: glitch2 3s infinite linear alternate-reverse;
+  transform: translateX(1px);
+  animation: glitch2 2.5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch1 {
-  0% { clip-path: inset(0 0 85% 0); }
-  50% { clip-path: inset(30% 0 30% 0); }
-  100% { clip-path: inset(85% 0 0 0); }
-}
-
-@keyframes glitch2 {
-  0% { clip-path: inset(80% 0 0 0); }
-  50% { clip-path: inset(20% 0 60% 0); }
+  0%   { clip-path: inset(80% 0 0 0); }
+  20%  { clip-path: inset(10% 0 85% 0); }
+  40%  { clip-path: inset(50% 0 30% 0); }
+  60%  { clip-path: inset(20% 0 60% 0); }
+  80%  { clip-path: inset(70% 0 10% 0); }
   100% { clip-path: inset(0 0 80% 0); }
 }
 
+@keyframes glitch2 {
+  0%   { clip-path: inset(0 0 90% 0); }
+  25%  { clip-path: inset(60% 0 20% 0); }
+  50%  { clip-path: inset(30% 0 50% 0); }
+  75%  { clip-path: inset(80% 0 0 0); }
+  100% { clip-path: inset(10% 0 70% 0); }
+}
 
 .bio {
   font-size: .9rem;
   color: var(--muted);
+  margin-top: 6px;
 }
 
+/* =====================
+   LINKS
+===================== */
 .links {
   display: grid;
   gap: 14px;
@@ -130,15 +168,21 @@ body {
   color: var(--text);
   background: linear-gradient(180deg, #121212, #0a0a0a);
   border: 1px solid #1c1c1c;
-  transition: all .25s ease;
+  font-weight: 600;
+  transition: all .25s cubic-bezier(.2,.8,.2,1);
 }
 
 .link:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.01);
   border-color: var(--accent);
-  box-shadow: var(--glow);
+  box-shadow:
+    0 0 20px rgba(255,0,60,.35),
+    inset 0 0 12px rgba(255,0,60,.25);
 }
 
+/* =====================
+   FOOTER
+===================== */
 .footer {
   margin-top: 26px;
   text-align: center;
