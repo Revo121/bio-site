@@ -53,9 +53,8 @@ body {
 /* =====================
    BACKGROUND AUDIO
 ===================== */
-
 #bg-audio {
-  display: none; /* completely hide the audio player */
+  display: none; /* hide the audio player */
 }
 
 /* =====================
