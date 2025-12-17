@@ -51,30 +51,27 @@
 
   <!-- JS to handle overlay click and start media -->
   <script>
-    const overlay = document.getElementById('overlay');
-    const audio = document.getElementById('bg-audio');
-    const video = document.getElementById('bg-video');
+const overlay = document.getElementById('overlay');
+const audio = document.getElementById('bg-audio');
+const video = document.getElementById('bg-video');
 
-    overlay.addEventListener('click', () => {
-      overlay.classList.add('fade-out');
+function startMedia() {
+  // Only play if not already playing
+  if (audio.paused) audio.play();
+  if (video.paused) video.play();
+}
 
-      overlay.addEventListener('transitionend', () => {
-        overlay.style.display = 'none';
-      });
+overlay.addEventListener('click', () => {
+  overlay.classList.add('fade-out');
+  overlay.addEventListener('transitionend', () => overlay.style.display = 'none');
+  startMedia();
+});
 
-      video.play();
-      audio.play();
-    });
-
-    // Sync video with audio loop
-    audio.addEventListener('ended', () => {
-      audio.currentTime = 0;
-      audio.play();
-
-      video.currentTime = 0;
-      video.play();
-    });
+// Make audio/video loop naturally using the loop attribute
+audio.loop = true;
+video.loop = true;
   </script>
 
 </body>
 </html>
+
