@@ -13,14 +13,19 @@
 </head>
 <body class="grain">
 
+  <!-- Overlay -->
+  <div id="overlay">
+    <div id="overlay-text">Click to Enter</div>
+  </div>
+
   <!-- Background video -->
-  <video autoplay muted loop id="bg-video">
+  <video id="bg-video" loop>
     <source src="background.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-  <!-- Background audio (hidden) -->
-  <audio autoplay loop id="bg-audio">
+  <!-- Background audio -->
+  <audio id="bg-audio" loop>
     <source src="background.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -44,34 +49,19 @@
     </div>
   </div>
 
-  <!-- Audio toggle button -->
-  <button id="audio-toggle" title="Toggle music">🔊</button>
-
-  <!-- JS fallback, toggle, and video/audio sync -->
+  <!-- JS to handle overlay click and start media -->
   <script>
+    const overlay = document.getElementById('overlay');
     const audio = document.getElementById('bg-audio');
-    const btn = document.getElementById('audio-toggle');
     const video = document.getElementById('bg-video');
 
-    // Try autoplay on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      audio.play().catch(() => {
-        console.log('Autoplay blocked by browser. User interaction required.');
-      });
-      video.play();
-    });
+    // Wait for user click to start video/audio
+    overlay.addEventListener('click', () => {
+      overlay.style.display = 'none'; // hide overlay
 
-    // Toggle play/pause
-    btn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        video.play();
-        btn.textContent = "🔊";
-      } else {
-        audio.pause();
-        video.pause();
-        btn.textContent = "🔈";
-      }
+      // Play video and audio
+      video.play();
+      audio.play();
     });
 
     // Sync video with audio loop
