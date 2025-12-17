@@ -35,7 +35,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #050505 !important;
+  background-color: transparent !important; /* allow video to show */
 }
 
 /* =====================
