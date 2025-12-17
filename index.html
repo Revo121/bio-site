@@ -19,7 +19,7 @@
     Your browser does not support the video tag.
   </video>
 
-  <!-- Background audio -->
+  <!-- Background audio (hidden) -->
   <audio autoplay loop id="bg-audio">
     <source src="background.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -27,11 +27,24 @@
 
   <div class="container">
     <div class="card">
-      <!-- your card content -->
+      <div class="profile">
+        <div class="avatar"></div>
+        <div class="username" data-text="@6msy">@6msy</div>
+        <div class="bio">nothing is real • everything fades</div>
+      </div>
+
+      <div class="links">
+        <a class="link" href="#">Instagram</a>
+        <a class="link" href="#">Discord</a>
+        <a class="link" href="#">Spotify</a>
+        <a class="link" href="#">Store</a>
+      </div>
+
+      <div class="footer">contact me for your own link in bio</div>
     </div>
   </div>
 
-  <!-- Inline JS for autoplay fallback -->
+  <!-- JS fallback for autoplay -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('bg-audio');
@@ -42,9 +55,4 @@
   </script>
 
 </body>
-
 </html>
-
-
-
-
