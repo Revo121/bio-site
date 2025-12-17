@@ -1,52 +1,61 @@
+/* Reset some default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-}
-
 body {
-  background: #0b0b0b;
-  color: #e6e6e6;
   font-family: 'Inter', sans-serif;
-  letter-spacing: 0.04em;
+  background-color: #0a0a0a;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-/* layout */
 .container {
-  max-width: 420px;
-  margin: auto;
-  padding-top: 20vh;
-  text-align: left;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  padding: 20px;
 }
 
-/* text */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #fff;
+}
+
 h1 {
-  font-size: 1.8rem;
-  font-weight: 400;
-  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 2em;
+  margin-bottom: 5px;
 }
 
 .tagline {
-  font-size: 0.75rem;
-  opacity: 0.5;
-  margin-bottom: 2rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+  color: #aaa;
 }
 
-/* links */
 .links a {
   display: block;
-  margin-bottom: 1rem;
-  color: #bdbdbd;
+  padding: 15px 0;
+  margin: 10px 0;
   text-decoration: none;
-  transition: 0.2s ease;
+  color: #fff;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371);
+  border-radius: 50px;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .links a:hover {
-  color: #ffffff;
-  filter: blur(0.4px);
-  letter-spacing: 0.08em;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
