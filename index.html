@@ -58,12 +58,10 @@
     overlay.addEventListener('click', () => {
       overlay.classList.add('fade-out');
 
-      // Wait for fade animation to finish before hiding overlay
       overlay.addEventListener('transitionend', () => {
         overlay.style.display = 'none';
       });
 
-      // Play video and audio
       video.play();
       audio.play();
     });
