@@ -116,13 +116,13 @@ body {
 .username::before {
   color: #ff003c;
   transform: translate(-2px, 0);
-  animation: glitch-red 0.8s infinite;
+  animation: glitch-red 1s infinite;
 }
 
 .username::after {
   color: #00fff0;
   transform: translate(2px, 0);
-  animation: glitch-cyan 0.8s infinite reverse;
+  animation: glitch-cyan 1s infinite reverse;
 }
 
 @keyframes glitch-red {
