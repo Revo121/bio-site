@@ -44,13 +44,30 @@
     </div>
   </div>
 
-  <!-- JS fallback for autoplay -->
+  <!-- Audio toggle button -->
+  <button id="audio-toggle" title="Toggle music">🔊</button>
+
+  <!-- JS fallback & toggle -->
   <script>
+    const audio = document.getElementById('bg-audio');
+    const btn = document.getElementById('audio-toggle');
+
+    // Try autoplay on page load
     window.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('bg-audio');
       audio.play().catch(() => {
         console.log('Autoplay blocked by browser. User interaction required.');
       });
+    });
+
+    // Toggle play/pause
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = "🔊";
+      } else {
+        audio.pause();
+        btn.textContent = "🔈";
+      }
     });
   </script>
 
