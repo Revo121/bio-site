@@ -131,17 +131,25 @@ body {
     clip-path: inset(0 0 0 0);
   }
 
-  93% {
+  72% {
     opacity: 1;
-    clip-path: inset(20% 0 60% 0);
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-1px, -1px);
   }
 
-  94% {
-    clip-path: inset(60% 0 20% 0);
+  74% {
+    clip-path: inset(40% 0 30% 0);
+    transform: translate(1px, 1px);
   }
 
-  95% {
+  76% {
+    clip-path: inset(70% 0 10% 0);
+    transform: translate(-1px, 0);
+  }
+
+  78% {
     opacity: 0;
+    transform: translate(0, 0);
   }
 }
 
