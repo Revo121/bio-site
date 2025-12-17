@@ -8,20 +8,30 @@
 body {
   font-family: 'Inter', sans-serif;
   overflow: hidden;
-  background: #0b0c10;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   position: relative;
+  background: #0b0c10;
 }
 
-/* Canvas covers full screen */
+/* Background video */
+#bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.4); /* Optional dim */
+}
+
+/* Canvas overlay for neon particles */
 #bg {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -53,16 +63,8 @@ body {
 }
 
 /* Name & tagline */
-h1 {
-  font-weight: 600;
-  font-size: 2em;
-  margin-bottom: 5px;
-}
-.tagline {
-  font-weight: 300;
-  margin-bottom: 30px;
-  color: #aaa;
-}
+h1 { font-weight: 600; font-size: 2em; margin-bottom: 5px; }
+.tagline { font-weight: 300; margin-bottom: 30px; color: #aaa; }
 
 /* Links / buttons */
 .links a {
