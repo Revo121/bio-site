@@ -47,27 +47,40 @@
   <!-- Audio toggle button -->
   <button id="audio-toggle" title="Toggle music">🔊</button>
 
-  <!-- JS fallback & toggle -->
+  <!-- JS fallback, toggle, and video/audio sync -->
   <script>
     const audio = document.getElementById('bg-audio');
     const btn = document.getElementById('audio-toggle');
+    const video = document.getElementById('bg-video');
 
     // Try autoplay on page load
     window.addEventListener('DOMContentLoaded', () => {
       audio.play().catch(() => {
         console.log('Autoplay blocked by browser. User interaction required.');
       });
+      video.play();
     });
 
     // Toggle play/pause
     btn.addEventListener('click', () => {
       if (audio.paused) {
         audio.play();
+        video.play();
         btn.textContent = "🔊";
       } else {
         audio.pause();
+        video.pause();
         btn.textContent = "🔈";
       }
+    });
+
+    // Sync video with audio loop
+    audio.addEventListener('ended', () => {
+      audio.currentTime = 0;
+      audio.play();
+
+      video.currentTime = 0;
+      video.play();
     });
   </script>
 
