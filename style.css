@@ -51,6 +51,14 @@ body {
 }
 
 /* =====================
+   BACKGROUND AUDIO
+===================== */
+
+#bg-audio {
+  display: none; /* completely hide the audio player */
+}
+
+/* =====================
    GRAIN OVERLAY
 ===================== */
 .grain::before {
