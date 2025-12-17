@@ -69,9 +69,37 @@ body {
 }
 
 .username {
-  font-size: 1.6rem;
+  position: relative;
+  font-size: 1.7rem;
   font-weight: 800;
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 15px rgba(255,0,60,.35);
 }
+
+.username::before,
+.username::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.username::before {
+  color: #ff003c;
+  animation: glitch1 2.5s infinite linear alternate-reverse;
+}
+
+.username::after {
+  color: #00fff0;
+  animation: glitch2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch1 {
+  0% { clip-path: inset(0 0 85% 0); }
+  50% { clip-path: inset(30%
+
 
 .bio {
   font-size: .9rem;
