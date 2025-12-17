@@ -100,48 +100,33 @@ body {
   font-size: 1.7rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--text);
+  color: #eaeaea;
 }
 
+/* glitch layers */
 .username::before,
 .username::after {
   content: attr(data-text);
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  overflow: hidden;
-  pointer-events: none; /* FIXES BUTTON CLICKS */
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .username::before {
   color: #ff003c;
-  transform: translateX(-1px);
-  animation: glitch1 2s infinite linear alternate-reverse;
+  transform: translate(-2px, 0);
+  animation: glitch-red 4s infinite;
 }
 
 .username::after {
   color: #00fff0;
-  transform: translateX(1px);
-  animation: glitch2 2.5s infinite linear alternate-reverse;
+  transform: translate(2px, 0);
+  animation: glitch-cyan 4s infinite;
 }
 
-@keyframes glitch1 {
-  0%   { clip-path: inset(80% 0 0 0); }
-  20%  { clip-path: inset(10% 0 85% 0); }
-  40%  { clip-path: inset(50% 0 30% 0); }
-  60%  { clip-path: inset(20% 0 60% 0); }
-  80%  { clip-path: inset(70% 0 10% 0); }
-  100% { clip-path: inset(0 0 80% 0); }
-}
+@keyframes glitch-red {
 
-@keyframes glitch2 {
-  0%   { clip-path: inset(0 0 90% 0); }
-  25%  { clip-path: inset(60% 0 20% 0); }
-  50%  { clip-path: inset(30% 0 50% 0); }
-  75%  { clip-path: inset(80% 0 0 0); }
-  100% { clip-path: inset(10% 0 70% 0); }
-}
 
 .bio {
   font-size: .9rem;
